@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Questions</title>
+        <link rel="stylesheet" th:href="@{/questions/css/questions-list-style.css}">
+    </head>
+    <body>
+        <div class="game_container">
+            <!-- TITLE -->
+            <h1>Questions</h1>
+
+            <!-- QUESTIONS CONTAINER -->
+            <div class="questions_container">
+
+                <!-- USER INPUT -->
+                <div class="questions" th:each="question : ${questions}">
+                    <a class="question" th:href="@{/api/v1/questions/{questionId}(questionId=${question.id})}">
+                        <div class="content">
+                            <p th:text="'Question ' + ${question.id}">Question #</p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>

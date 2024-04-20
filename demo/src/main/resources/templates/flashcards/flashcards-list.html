@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flashcards</title>
+        <link rel="stylesheet" th:href="@{/flashcards/css/flashcards-style.css}">
+    </head>
+    <body>
+        <div class="game_container">
+            <!-- TITLE -->
+            <h1>Flashcards</h1>
+
+            <!-- CARDS CONTAINER -->
+            <div class="cards_container">
+
+<!--                &lt;!&ndash; FIRST CARD &ndash;&gt;-->
+<!--                <div class="cards">-->
+<!--                    <div class="card">-->
+<!--                        <div class="front"><p>France</p></div>-->
+<!--                        <div class="back"><p>Francoise Meyers</p></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; SECOND CARD &ndash;&gt;-->
+<!--                <div class="cards">-->
+<!--                    <div class="card">-->
+<!--                        <div class="front"><p>United States</p></div>-->
+<!--                        <div class="back"><p>Alice Walton</p></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; THIRD CARD &ndash;&gt;-->
+<!--                <div class="cards">-->
+<!--                    <div class="card">-->
+<!--                        <div class="front"><p>Australia</p></div>-->
+<!--                        <div class="back"><p>Gina Rinehart</p></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; FOURTH CARD &ndash;&gt;-->
+<!--                <div class="cards">-->
+<!--                    <div class="card">-->
+<!--                        <div class="front"><p>Germany</p></div>-->
+<!--                        <div class="back"><p>Susanne Klatten</p></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; FIFTH CARD &ndash;&gt;-->
+<!--                <div class="cards">-->
+<!--                    <div class="card">-->
+<!--                        <div class="front"><p>Ghana</p></div>-->
+<!--                        <div class="back"><p>Patricia Poku-Diaby</p></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; SIXTH CARD &ndash;&gt;-->
+<!--                <div class="cards">-->
+<!--                    <div class="card">-->
+<!--                        <div class="front"><p>Chile</p></div>-->
+<!--                        <div class="back"><p>Iris Fontbona</p></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; SEVENTH CARD &ndash;&gt;-->
+<!--                <div class="cards">-->
+<!--                    <div class="card">-->
+<!--                        <div class="front"><p>Brazil</p></div>-->
+<!--                        <div class="back"><p>Luiza Trajano</p></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; EIGHTH CARD &ndash;&gt;-->
+<!--                <div class="cards">-->
+<!--                    <div class="card">-->
+<!--                        <div class="front"><p>Nigeria</p></div>-->
+<!--                        <div class="back"><p>Folorunsho Alakija</p></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; NINTH CARD &ndash;&gt;-->
+<!--                <div class="cards">-->
+<!--                    <div class="card">-->
+<!--                        <div class="front"><p>Russia</p></div>-->
+<!--                        <div class="back"><p>Elena Baturina</p></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; TENTH CARD &ndash;&gt;-->
+<!--                <div class="cards">-->
+<!--                    <div class="card">-->
+<!--                        <div class="front"><p>England</p></div>-->
+<!--                        <div class="back"><p>Gopi Hinduja</p></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <!-- USER INPUT -->
+                <div th:each="flashcard : ${flashcards}" class="cards">
+                    <div class="card">
+                        <div class="front"><p th:text="${flashcard.frontSideContent}"></p></div>
+                        <div class="back"><p th:text="${flashcard.backSideContent}"></p></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script th:src="@{/flashcards/js/flashcards-rotation-script.js}"></script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards Single</title>
+    <link rel="stylesheet" th:href="@{/flashcards/css/flashcards-style.css}">
+  </head>
+  <body>
+
+    <!-- CARDS CONTAINER -->
+    <div class="card_container">
+
+      <!-- USER INPUT -->
+      <div class="card" th:object="${flashcard}">
+        <div class="front"><p th:text="*{frontSideContent}"></p></div>
+        <div class="back"><p th:text="*{backSideContent}"></p></div>
+      </div>
+    </div>
+
+    <div>
+      <a class="btn" type="submit" th:href="@{/api/v1/flashcards/{flashcardId}/edit(flashcardId=${flashcard.id})}">Edit</a>
+      <a class="btn" type="submit" th:href="@{/api/v1/flashcards/{flashcardId}/delete(flashcardId=${flashcard.id})}">Delete</a>
+    </div>
+
+    <script th:src="@{/flashcards/js/flashcards-rotation-script.js}"></script>
+  </body>
+</html>

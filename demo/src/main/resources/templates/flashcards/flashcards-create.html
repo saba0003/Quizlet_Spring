@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Flashcards</title>
+        <link rel="stylesheet" th:href="@{/flashcards/css/flashcards-form-style.css}">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Create Flashcards</h2>
+            <form role="form" method="post" th:action="@{/api/v1/flashcards/new}" th:object="${flashcard}">
+
+                <!-- Front Side Content -->
+                <label for="front">Front Side:</label><br>
+                <input type="text" id="front" name="front" th:field="*{frontSideContent}" placeholder="Defenestration"><br>
+                <p th:if="${#fields.hasErrors('frontSideContent')}" class="text-danger" th:errors="*{frontSideContent}"></p>
+
+                <!-- Back Side Content -->
+                <label for="back">Back Side:</label>
+                <br><textarea id="back" name="back" th:field="*{backSideContent}" rows="4" cols="50" placeholder="To throw someone out of a window"></textarea><br>
+                <p th:if="${#fields.hasErrors('backSideContent')}" class="text-danger" th:errors="*{backSideContent}"></p>
+
+                <!-- Buttons -->
+                <button type="reset">Reset</button>
+                <button type="submit">Create</button>
+            </form>
+        </div>
+    </body>
+</html>

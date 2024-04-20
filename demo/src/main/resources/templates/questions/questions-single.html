@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Question Details</title>
+        <link rel="stylesheet" th:href="@{/questions/css/quiz-style.css}">
+    </head>
+    <body>
+        <div class="app" th:object="${question}">
+            <h1 th:text="'Question ' + ${question.id}">Question goes here</h1>
+            <div class="quiz">
+                <div class="questions-container">
+                    <div class="question">
+                        <h2 id="question" class="description" th:text="${question.description}">Question goes here</h2>
+                        <div id="answer-buttons">
+                            <button class="btn"><div class="possible-answer" th:text="${question.possibleAnswers.get(0).content}" th:classappend="${question.correctAnswer == 1 ? 'correct-answer' : ''}">Answer 1</div></button>
+                            <button class="btn"><div class="possible-answer" th:text="${question.possibleAnswers.get(1).content}" th:classappend="${question.correctAnswer == 2 ? 'correct-answer' : ''}">Answer 2</div></button>
+                            <button class="btn"><div class="possible-answer" th:text="${question.possibleAnswers.get(2).content}" th:classappend="${question.correctAnswer == 3 ? 'correct-answer' : ''}">Answer 3</div></button>
+                            <button class="btn"><div class="possible-answer" th:text="${question.possibleAnswers.get(3).content}" th:classappend="${question.correctAnswer == 4 ? 'correct-answer' : ''}">Answer 4</div></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="U-D">
+                <a class="edit-btn" type="submit" th:href="@{/api/v1/questions/{questionId}/edit(questionId=${question.id})}">Edit</a>
+                <a class="delete-btn" type="submit" th:href="@{/api/v1/questions/{questionId}/delete(questionId=${question.id})}">Delete</a>
+            </div>
+
+            <script th:src="@{/questions/js/questions-single-script.js}"></script>
+        </div>
+    </body>
+</html>

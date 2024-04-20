@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Questions Edit</title>
+        <link rel="stylesheet" th:href="@{/questions/css/questions-form-style.css}">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Edit Questions</h2>
+            <form role="form" method="post" th:action="@{/api/v1/questions/{questionId}/edit(questionId=${question.id})}" th:object="${question}">
+
+                <input type="hidden" th:field="*{id}">
+
+                <!-- Description -->
+                <label for="description">Description:</label><br>
+                <input type="text" id="description" name="description" th:field="*{description}" placeholder="1 + 1 = ?"><br>
+                <p th:if="${#fields.hasErrors('description')}" class="text-danger" th:errors="*{description}"></p>
+
+                <!-- Possible Answer 1 -->
+                <label for="possibleAnswer1">Answer 1:</label><br>
+                <input type="text" id="possibleAnswer1" name="possibleAnswers[0]" th:field="*{possibleAnswers[0].content}" placeholder="4"><br>
+                <p th:if="${#fields.hasErrors('possibleAnswers[0].content')}" class="text-danger" th:errors="*{possibleAnswers[0].content}"></p>
+
+                <!-- Possible Answer 2 -->
+                <label for="possibleAnswer2">Answer 2:</label><br>
+                <input type="text" id="possibleAnswer2" name="possibleAnswers[1]" th:field="*{possibleAnswers[1].content}" placeholder="1"><br>
+                <p th:if="${#fields.hasErrors('possibleAnswers[1].content')}" class="text-danger" th:errors="*{possibleAnswers[1].content}"></p>
+
+                <!-- Possible Answer 3 -->
+                <label for="possibleAnswer3">Answer 3:</label><br>
+                <input type="text" id="possibleAnswer3" name="possibleAnswers[2]" th:field="*{possibleAnswers[2].content}" placeholder="3"><br>
+                <p th:if="${#fields.hasErrors('possibleAnswers[2].content')}" class="text-danger" th:errors="*{possibleAnswers[2].content}"></p>
+
+                <!-- Possible Answer 4 -->
+                <label for="possibleAnswer4">Answer 4:</label><br>
+                <input type="text" id="possibleAnswer4" name="possibleAnswers[3]" th:field="*{possibleAnswers[3].content}" placeholder="2"><br>
+                <p th:if="${#fields.hasErrors('possibleAnswers[3].content')}" class="text-danger" th:errors="*{possibleAnswers[3].content}"></p>
+
+                <!-- Correct Answer -->
+                <label>Correct Answer:</label><br>
+                <input type="radio" id="correctAnswer1" name="correctAnswer" value="1" th:checked="${question.correctAnswer == 1}">
+                <label for="correctAnswer1">Answer 1</label><br>
+                <input type="radio" id="correctAnswer2" name="correctAnswer" value="2" th:checked="${question.correctAnswer == 2}">
+                <label for="correctAnswer2">Answer 2</label><br>
+                <input type="radio" id="correctAnswer3" name="correctAnswer" value="3" th:checked="${question.correctAnswer == 3}">
+                <label for="correctAnswer3">Answer 3</label><br>
+                <input type="radio" id="correctAnswer4" name="correctAnswer" value="4" th:checked="${question.correctAnswer == 4}">
+                <label for="correctAnswer4">Answer 4</label><br>
+                <p th:if="${#fields.hasErrors('correctAnswer')}" class="text-danger" th:errors="*{correctAnswer}"></p>
+
+                <!-- Buttons -->
+                <button type="reset">Reset</button>
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </body>
+</html>
